@@ -65,6 +65,8 @@ curl -L http://install.ohmyz.sh | sh
 
 sudo usermod --shell $(which zsh) <your_username>
 
+sudo apt-get install fonts-powerline
+
 # Install VsCodium
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
 
