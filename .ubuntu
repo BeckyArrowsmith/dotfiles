@@ -41,13 +41,11 @@ sudo apt install brave-browser
 sudo apt install git-all
 
 # Install NVM and Node
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
-bash install_nvm.sh
+sudo apt install nodejs
 
-source ~/.profile
-
-nvm --version # if you fail here, restart the terminal session silly
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 # Install Signal
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
