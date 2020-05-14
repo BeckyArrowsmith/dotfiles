@@ -1,0 +1,78 @@
+# Ask for the administrator password upfront
+sudo -v
+
+# Remove Chrome 
+sudo apt-get purge chromium-browser
+rm ~/.config/chromium/ -rf
+
+sudo apt-get purge google-chrome-stable
+rm ~/.config/google-chrome/ -rf
+
+# Remove games
+sudo apt purge aisleriot gnome-mahjongg gnome-mines gnome-sudoku  && sudo apt autoremove
+
+# Remove Dell stuff (XPS developer edition)
+sudo apt-get remove remmina
+
+# Remove rest of crap
+sudo apt-get remove shotwell
+sudo apt-get remove cheese
+sudo apt-get remove rhythmbox
+sudo apt-get remove simplescan
+sudo apt-get remove transmission
+sudo apt-get remove gnome-todo
+sudo apt-get remove icedtea-netx
+
+# Update/upgrade APT before we start doing owt
+sudo apt-get update && time sudo apt-get dist-upgrade
+
+# Install Brave
+sudo apt install apt-transport-https curl
+
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sudo apt update
+
+sudo apt install brave-browser
+
+# Install git
+sudo apt install git-all
+
+# Install NVM and Node
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+bash install_nvm.sh
+
+source ~/.profile
+
+nvm --version # if you fail here, restart the terminal session silly
+
+# Install Signal
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+sudo apt update && sudo apt install signal-desktop
+
+# Install Terminal
+
+# Install VsCodium
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+
+echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
+
+sudo apt update && sudo apt install codium
+
+# Install Docker
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+sudo apt update
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce
+
