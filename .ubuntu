@@ -57,6 +57,14 @@ sudo apt update && sudo apt install signal-desktop
 # Install Terminal
 sudo apt install tilix
 
+# Install zsh
+sudo apt install zsh
+
+# Install oh-my-zsh
+curl -L http://install.ohmyz.sh | sh
+
+sudo usermod --shell $(which zsh) <your_username>
+
 # Install VsCodium
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
 
