@@ -18,7 +18,17 @@ brew bundle
 chsh -s $(which zsh)
 
 # Set zsh and oh-my-zsh preferences
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+
+cp .zshrc ~/
 
 # Create a Code directory
 mkdir $HOME/Code
@@ -33,6 +43,10 @@ xattr -d com.apple.quarantine /Applications/VSCodium.app
 # Install Slack and Signal
 brew cask install slack
 brew cask install signal
+
+# Install node & node env
+brew install node
+brew install nodenv
 
 # Set OS X preferences
 # We will run this last because this will reload the shell
